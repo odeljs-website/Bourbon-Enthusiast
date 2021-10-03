@@ -1,0 +1,55 @@
+.reveal-top-left{
+width: 50%;
+
+position: relative;
+background-image: url("Speak-Easy-Left.jpeg");
+background-size: cover;
+background-repeat: no-repeat;
+
+}
+
+.reveal-top-right{
+width: 50%;
+
+position: relative;
+background-image: url("Speak-Easy-Right.jpeg");
+background-size: cover;
+background-repeat: no-repeat;
+
+}
+
+
+
+.reveal-wrapper{
+  min-height: 100vh;
+  display: flex;
+
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.disc{
+  width: 16em;
+  height: 16em;
+  border-radius: 50%;
+  background-image: url("Bourbon-Glass.png");
+  background-size: contain;
+  background-color: black;
+  top: 40%;
+  right: 42.5%;
+  position: fixed;
+  z-index: 1;
+  transition-duration: 2s;
+
+}
+.reveal-wrapper{
+  background-color: #60799f;
+}
+.h1{
+  font: Bradley Hand, cursive;
+}
