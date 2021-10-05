@@ -23,6 +23,7 @@ background-repeat: no-repeat;
 .reveal-wrapper{
   min-height: 100vh;
   display: flex;
+  overflow-x: hidden;
 
 }
 
@@ -48,8 +49,38 @@ background-repeat: no-repeat;
 
 }
 .reveal-wrapper{
-  background-color: #60799f;
+  background-color: black;
 }
-.h1{
-  font: Bradley Hand, cursive;
+
+
+.title-bar{
+  position: fixed;
+  top: 0%;
+  left: 10%;
+  right: 10%;
+  display: none;
+  background-color: #9f8660;
+  height: 50px;
+  text-align: center;
+
+
+
+}
+
+h1{
+  color: black;
+}
+
+.navigation-bar{
+  position: fixed;
+  top: 50px;
+  left: 10%;
+  right: 10%;
+  display: none;
+  background-color: #d2902d;
+  height: 50px;
+  text-align: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+
 }
