@@ -56,12 +56,12 @@ background-repeat: no-repeat;
 .title-bar{
   position: fixed;
   top: 0%;
-  left: 10%;
-  right: 10%;
   display: none;
   background-color: #9f8660;
   height: 50px;
   text-align: center;
+  left: 10%;
+  right: 10%;
 
 
 
@@ -74,13 +74,101 @@ h1{
 .navigation-bar{
   position: fixed;
   top: 50px;
-  left: 10%;
-  right: 10%;
   display: none;
   background-color: #d2902d;
   height: 50px;
   text-align: center;
   justify-content: space-evenly;
   flex-direction: row;
+  left: 10%;
+  right: 10%;
 
+
+}
+
+.nav-button{
+  border-color: white;
+  border-width: 3px;
+  border-style: solid;
+  background-color: black;
+
+}
+
+h2{
+  color: white;
+  padding-left: 2px;
+  padding-right: 2px;
+  bottom: 0;
+}
+
+$n: 8;
+$item-width: 400px;
+$item-seperation: 80px;
+$viewer-distance: 500px;
+$thera: 2 * 3.141592653589793 / $n;
+$apothem: 2 * tan(PI / $n);
+
+
+.carousal{
+  position: fixed;
+  display: flex;
+  $perspective: $viewer-distance;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+
+  >*{
+    flex: 0 0 auto;
+  }
+  .figure{
+    width: $item-width;
+    transform-style: preserve-3d;
+    transition: tranform 0.5s;
+    transform-origin: 50% 50% (-$apothem);
+    img{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 $item-seperation / 2;
+        opacity: 0.9;
+        &:not(:first-of-type){
+          position: absolute;
+          left: 0;
+          top: 0;
+          transform-origin: 50% 50% (-$apothem);
+          display: none;
+        }
+        @for $i from 2 through $n{
+          &:nth-child(#{$i}){
+            transform: rotateY(#{($i - 1) * $theta}rad);
+    }
+  }
+
+}
+}
+}
+.carousal figure{
+  tranform: 50% 50% (-$apothem);
+
+}
+
+.carousal figure{
+  transform: rotateY(/rad);
+}
+
+.carousal figure img:not(:first-of-type){
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.img: not(:first-of-type){
+  transform-origin: 50% 50% (-$apothem);
+}
+
+.carousal figure img{
+  @for $i from 2 through $n{
+    &:nth-child(#{$i}){
+      transform: rotateY(#{($i - 1) * $theta}rad);
+    }
+  }
 }
