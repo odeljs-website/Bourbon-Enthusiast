@@ -75,7 +75,7 @@ h1{
   position: fixed;
   top: 50px;
   display: none;
-  background-color: #d2902d;
+  background-color: #ecd9c6;
   height: 50px;
   text-align: center;
   justify-content: space-evenly;
@@ -94,6 +94,15 @@ h1{
 
 }
 
+.carousal{
+  position: fixed;
+  top: 110px;
+  display: none;
+  height: 40vh;
+  left: 10%;
+  right: 10%;
+}
+
 h2{
   color: white;
   padding-left: 2px;
@@ -101,74 +110,60 @@ h2{
   bottom: 0;
 }
 
-$n: 8;
-$item-width: 400px;
-$item-seperation: 80px;
-$viewer-distance: 500px;
-$thera: 2 * 3.141592653589793 / $n;
-$apothem: 2 * tan(PI / $n);
-
-
-.carousal{
-  position: fixed;
-  display: flex;
-  $perspective: $viewer-distance;
-  overflow: hidden;
-  flex-direction: column;
-  align-items: center;
-
-  >*{
-    flex: 0 0 auto;
-  }
-  .figure{
-    width: $item-width;
-    transform-style: preserve-3d;
-    transition: tranform 0.5s;
-    transform-origin: 50% 50% (-$apothem);
-    img{
-        width: 100%;
-        box-sizing: border-box;
-        padding: 0 $item-seperation / 2;
-        opacity: 0.9;
-        &:not(:first-of-type){
-          position: absolute;
-          left: 0;
-          top: 0;
-          transform-origin: 50% 50% (-$apothem);
-          display: none;
-        }
-        @for $i from 2 through $n{
-          &:nth-child(#{$i}){
-            transform: rotateY(#{($i - 1) * $theta}rad);
-    }
-  }
-
-}
-}
-}
-.carousal figure{
-  tranform: 50% 50% (-$apothem);
-
+[type=radio]{
+  display: none;
 }
 
-.carousal figure{
-  transform: rotateY(/rad);
+#slider{
+  height: 35vh;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
-.carousal figure img:not(:first-of-type){
+#slider label{
+  margin: auto;
+  width: 60%;
+  height: 100%;
+  border-radius: 4px;
   position: absolute;
   left: 0;
   right: 0;
+  cursor: pointer;
+  transition: transform 0.4s ease;
 }
 
-.img: not(:first-of-type){
-  transform-origin: 50% 50% (-$apothem);
+#s1:checked ~ #slide4, #s2:checked ~ #slide5,
+#s3:checked ~ #slide1, #s4:checked ~ #slide2,
+#s5:checked ~ #slide3{
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.37);
+  transform: translate3d(-30%,0,-200px);
 }
 
-.carousal figure img{
-  @for $i from 2 through $n{
-    &:nth-child(#{$i}){
-      transform: rotateY(#{($i - 1) * $theta}rad);
-    }
-  }
+#s1:checked ~ #slide5, #s2:checked ~ #slide1,
+#s3:checked ~ #slide2, #s4:checked ~ #slide3,
+#s5:checked ~ #slide4{
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,.3),0 2px 2px 0 rgba(0,0,0,.2);
+  transform: translate3d(-15%,0,-100px);
+}
+
+#s1:checked ~ #slide1, #s2:checked ~ #slide2,
+#s3:checked ~ #slide3, #s4:checked ~ #slide4,
+#s5:checked ~ #slide5{
+  box-shadow: 0 13px 25px 0 rgba(0,0,0,.3),0 11px 7px 0 rgba(0,0,0,..19);
+  transform: translate3d(0,0,0);
+}
+
+#s1:checked ~ #slide2, #s2:checked ~ #slide3,
+#s3:checked ~ #slide3, #s4:checked ~ #slide5,
+#s5:checked ~ #slide1{
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,.3),0 2px 2px 0 rgba(0,0,0,.2);
+  transform: translate3d(15%,0,-100px);
+}
+
+#s1:checked ~ #slide3, #s2:checked ~ #slide4,
+#s3:checked ~ #slide5, #s4:checked ~ #slide1,
+#s5:checked ~ #slide2{
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.37);
+  transform: translate3d(30%,0,-200px);
 }
